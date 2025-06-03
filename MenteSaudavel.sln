@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36121.58 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "mentesaudavel.client", "mentesaudavel.client\mentesaudavel.client.esproj", "{F5DBCA45-EF7E-5C75-41C7-A48326C4A585}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MenteSaudavel.Server", "MenteSaudavel.Server\MenteSaudavel.Server.csproj", "{33B21AF9-6F23-4D9C-A79D-C215ECD07DC9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F5DBCA45-EF7E-5C75-41C7-A48326C4A585}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5DBCA45-EF7E-5C75-41C7-A48326C4A585}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5DBCA45-EF7E-5C75-41C7-A48326C4A585}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{F5DBCA45-EF7E-5C75-41C7-A48326C4A585}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5DBCA45-EF7E-5C75-41C7-A48326C4A585}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5DBCA45-EF7E-5C75-41C7-A48326C4A585}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{33B21AF9-6F23-4D9C-A79D-C215ECD07DC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33B21AF9-6F23-4D9C-A79D-C215ECD07DC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33B21AF9-6F23-4D9C-A79D-C215ECD07DC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33B21AF9-6F23-4D9C-A79D-C215ECD07DC9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {23E46417-88B3-49E3-952A-FB68FF6A1AA4}
+	EndGlobalSection
+EndGlobal
