@@ -12,7 +12,7 @@ namespace MenteSaudavel.Server._02.Services
         #endregion
 
         #region TABELAS
-        public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<Usuario> Usuario { get; set; }
         #endregion
 
         #region METODOS

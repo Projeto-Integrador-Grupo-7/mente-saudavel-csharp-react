@@ -16,5 +16,15 @@ namespace MenteSaudavel.Server._02.Services.Services
         {
             return _unitOfWork.UsuarioRepository.GetAll().ToList();
         }
+
+        public Usuario CriarUsuario()
+        {
+            Usuario usuario = new Usuario("Teste" + DateTime.Now, "", "", new DateOnly(), 'M');
+
+            _unitOfWork.UsuarioRepository.Add(usuario);
+            _unitOfWork.SaveChanges();
+
+            return usuario;
+        }
     }
 }

@@ -22,5 +22,13 @@ namespace MenteSaudavel.Server._01.Surface.Controllers
 
             return Ok(listaUsuario);
         }
+
+        [HttpPost]
+        public IActionResult CriarUsuario()
+        {
+            Usuario usuario = _usuarioService.CriarUsuario();
+
+            return Ok(usuario);
+        }
     }
 }
