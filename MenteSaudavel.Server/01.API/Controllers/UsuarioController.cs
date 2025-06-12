@@ -2,10 +2,10 @@
 using MenteSaudavel.Server._03.Data.Entities;
 using Microsoft.AspNetCore.Mvc;
 
-namespace MenteSaudavel.Server._01.Surface.Controllers
+namespace MenteSaudavel.Server._01.API.Controllers
 {
-    [Route("api/usuarios")]
     [ApiController]
+    [Route("api/usuarios")]
     public class UsuarioController : ControllerBase
     {
         private readonly IUsuarioService _usuarioService;

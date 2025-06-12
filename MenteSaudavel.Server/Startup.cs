@@ -11,6 +11,16 @@ namespace MenteSaudavel.Server
         {
             IServiceCollection services = builder.Services;
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowReactDev", policy =>
+                {
+                    policy.AllowAnyOrigin()
+                          .AllowAnyHeader()
+                          .AllowAnyMethod();
+                });
+            });
+
             services.AddControllers();
 
             services.AddEndpointsApiExplorer();
@@ -27,6 +37,8 @@ namespace MenteSaudavel.Server
 
         public static void ConfigureApplication(WebApplication app)
         {
+            app.UseCors("AllowReactDev");
+
             app.UseDefaultFiles();
             app.UseStaticFiles();
 
