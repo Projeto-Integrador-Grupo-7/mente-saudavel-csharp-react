@@ -14,9 +14,13 @@
         public char Sexo { get; set; }
 
         public bool IsAdmin { get; set; }
+
+        public List<Questionario> Questionarios { get; } = new List<Questionario>();
         #endregion
 
         #region CONSTRUTORES
+        internal Usuario() { }
+
         public Usuario(string nome, string email, string senha, DateOnly dataNascimento, char sexo)
         {
             Nome = nome;
@@ -29,7 +33,15 @@
         #endregion
 
         #region METODOS
+        public void AdicionarQuestionario(Questionario questionario)
+        {
+            Questionarios.Add(questionario);
+        }
 
+        public Questionario? GetUltimoQuestionario()
+        {
+            return Questionarios.OrderBy(questionario => questionario.DataEnvio).FirstOrDefault();
+        }
         #endregion
 
         #region VALIDACOES
