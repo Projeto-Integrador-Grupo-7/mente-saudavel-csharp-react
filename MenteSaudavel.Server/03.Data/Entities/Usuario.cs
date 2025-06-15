@@ -1,4 +1,6 @@
-﻿namespace MenteSaudavel.Server._03.Data.Entities
+using MenteSaudavel.Server._04._Infrastructure.Enums;
+
+namespace MenteSaudavel.Server._03.Data.Entities
 {
     public class Usuario : Entity
     {
@@ -11,24 +13,24 @@
 
         public DateOnly DataNascimento { get; set; }
 
-        public char Sexo { get; set; }
+        public EnumGenero Genero { get; set; }
 
-        public bool IsAdmin { get; set; }
+        public int IsAdmin { get; set; }
 
-        public List<Questionario> Questionarios { get; } = new List<Questionario>();
+        public List<Questionario> Questionarios { get; private set; } = new List<Questionario>();
         #endregion
 
         #region CONSTRUTORES
         internal Usuario() { }
 
-        public Usuario(string nome, string email, string senha, DateOnly dataNascimento, char sexo)
+        public Usuario(string nome, string email, string senha, DateOnly dataNascimento, EnumGenero genero)
         {
             Nome = nome;
             Email = email;
             Senha = senha;
             DataNascimento = dataNascimento;
-            Sexo = sexo;
-            IsAdmin = false;
+            Genero = genero;
+            IsAdmin = 0;
         }
         #endregion
 

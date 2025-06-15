@@ -1,19 +1,19 @@
-﻿using MenteSaudavel.Server._04._Infrastructure.Enums;
+using MenteSaudavel.Server._04._Infrastructure.Enums;
 
 namespace MenteSaudavel.Server._03.Data.Entities
 {
     public class Questionario : Entity
     {
         #region PROPRIEDADES
-        public Usuario Respondente { get; }
+        public Usuario Respondente { get; private set; }
 
         public int Pontuacao { get; private set; }
 
         public EnumEstratificacao Estratificacao { get; private set; }
 
-        public DateTime DataEnvio { get; }
+        public DateTime DataEnvio { get; private set; }
 
-        public List<Resposta> Respostas { get; } = new List<Resposta>();
+        public List<Resposta> Respostas { get; private set; } = new List<Resposta>();
         #endregion
 
         #region CONSTRUTORES
@@ -34,7 +34,7 @@ namespace MenteSaudavel.Server._03.Data.Entities
 
         public void CalcularPontuacao()
         {
-            Pontuacao = Respostas.Count(resposta => resposta.Valor);
+            Pontuacao = Respostas.Count(resposta => resposta.Valor == 1);
         }
 
         public void DefinirEstratificacao()

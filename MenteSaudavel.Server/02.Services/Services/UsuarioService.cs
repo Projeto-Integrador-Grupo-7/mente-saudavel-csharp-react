@@ -1,5 +1,6 @@
-﻿using MenteSaudavel.Server._02.Services.Interfaces.Services;
+using MenteSaudavel.Server._02.Services.Interfaces.Services;
 using MenteSaudavel.Server._03.Data.Entities;
+using MenteSaudavel.Server._04._Infrastructure.Enums;
 
 namespace MenteSaudavel.Server._02.Services.Services
 {
@@ -19,7 +20,7 @@ namespace MenteSaudavel.Server._02.Services.Services
 
         public Usuario CriarUsuario()
         {
-            Usuario usuario = new Usuario("Teste" + DateTime.Now, "", "", new DateOnly(), 'M');
+            Usuario usuario = new Usuario("Teste" + DateTime.Now, "", "", new DateOnly(), EnumGenero.Masculino);
 
             _unitOfWork.UsuarioRepository.Add(usuario);
             _unitOfWork.SaveChanges();
