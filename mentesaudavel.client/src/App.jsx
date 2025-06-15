@@ -1,23 +1,12 @@
-import { useEffect } from 'react';
-import api from './services/api';
+import { Outlet } from 'react-router-dom';
+import Header from './components/Header';
 
-function App() {
-    let usuarios = []
-
-    async function getUsuarios() {
-        const retorno = await api.get('https://localhost:7054/api/usuarios');
-
-        usuarios = retorno.data;
-        console.log(usuarios);
-    }
-
-    useEffect(() => {
-        getUsuarios()
-    }, []);
-
+const App = () => {
     return (
         <div>
-            <h1>Página provisória</h1>
+            <Header />
+            <Outlet />
+            <footer></footer>
         </div>
     )
 }
