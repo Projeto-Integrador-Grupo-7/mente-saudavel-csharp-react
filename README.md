@@ -16,3 +16,23 @@ Clicar com botão direito no projeto do backend (MenteSaudavel.Server) -> Clicar
   "ConnectionStrings:DefaultConnectionString": "Server=localhost;Database=MenteSaudavelDB;Trusted_Connection=True;TrustServerCertificate=True;"
 }
 ```
+
+## Explicação da estrutura do FrontEnd:
+### Components
+A pasta "components" é onde ficará os componentes que nós iremos reutilizar em outras partes do código, então, a primeira pessoa que for criar um botão por exemplo, deve criar ele lá dentro, dessa forma, quando outra pessoa precisar utilizar um botão em alguma outra tela, ela poderá chamar esse componente, apenas passando o texto que o botão deve ter, a cor dele, o tamanho, etc...
+
+### Pages
+Aqui ficarão as "Views", ou seja, o conteúdo de visualização das páginas.
+
+## Explicação da estrutura do BackEnd:
+### 01.API
+Essa é a parte superior da API, onde ficam as controllers que recebem as requisições do frontend. Nessa camada não deverá ter regras de negócio, apenas receber a requisição e passar adiante pra próxima camada e após receber a resposta, retornar ao frontend.
+
+### 02.Services
+Essa é a camada onde o banco de dados está configurado, juntamente com as services que é onde ficarão as regras de negócio, e as repositories que servem para fazer as queries do banco de dados. Nessa camada também se encontram as migrations, que geram as alterações no banco.
+
+### 03.Entities
+Camada que ficam as entidades do sistema, ou seja, basicamente as tabelas mapeadas como classes do sistema.
+
+### 04.Infrastructure
+Nessa última camada ficarão os Enums, Helpers, Extensions, e demais classes e métodos que auxiliam o sistema como um todo.
