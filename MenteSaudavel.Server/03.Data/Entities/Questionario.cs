@@ -1,4 +1,4 @@
-using MenteSaudavel.Server._04._Infrastructure.Enums;
+using MenteSaudavel.Server._03.Data.ValueObjects;
 
 namespace MenteSaudavel.Server._03.Data.Entities
 {
@@ -7,9 +7,9 @@ namespace MenteSaudavel.Server._03.Data.Entities
         #region PROPRIEDADES
         public Usuario Respondente { get; private set; }
 
-        public int Pontuacao { get; private set; }
+        public int? Pontuacao { get; private set; }
 
-        public EnumEstratificacao Estratificacao { get; private set; }
+        public Estratificacao? Estratificacao { get; private set; }
 
         public DateTime DataEnvio { get; private set; }
 
@@ -34,18 +34,17 @@ namespace MenteSaudavel.Server._03.Data.Entities
 
         public void CalcularPontuacao()
         {
-            Pontuacao = Respostas.Count(resposta => resposta.Valor == 1);
+            Pontuacao = Respostas.Count(resposta => resposta.Valor);
         }
 
         public void DefinirEstratificacao()
         {
-            Estratificacao = Pontuacao switch
+            if (!Pontuacao.HasValue)
             {
-                > 0 and <= 7 => EnumEstratificacao.Leve,
-                >= 8 and <= 14 => EnumEstratificacao.Moderado,
-                >= 15 and <= 20 => EnumEstratificacao.Grave,
-                _ => EnumEstratificacao.NaoIdentificado
-            };
+                throw new ArgumentException("Pontuação deve ser calculada antes de definir a estratificação.");
+            }
+
+            Estratificacao = new Estratificacao(Pontuacao.Value);
         }
         #endregion
 

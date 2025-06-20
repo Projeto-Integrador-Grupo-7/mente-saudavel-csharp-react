@@ -1,4 +1,5 @@
-using MenteSaudavel.Server._04._Infrastructure.Enums;
+using MenteSaudavel.Server._03.Data.ValueObjects;
+using MenteSaudavel.Server._04.Infrastructure.Enums;
 
 namespace MenteSaudavel.Server._03.Data.Entities
 {
@@ -7,7 +8,7 @@ namespace MenteSaudavel.Server._03.Data.Entities
         #region PROPRIEDADES
         public string Nome { get; set; }
 
-        public string Email { get; set; }
+        public Email Email { get; set; }
 
         public string Senha { get; set; }
 
@@ -15,7 +16,7 @@ namespace MenteSaudavel.Server._03.Data.Entities
 
         public EnumGenero Genero { get; set; }
 
-        public int IsAdmin { get; set; }
+        public bool IsAdmin { get; set; }
 
         public List<Questionario> Questionarios { get; private set; } = new List<Questionario>();
         #endregion
@@ -26,11 +27,11 @@ namespace MenteSaudavel.Server._03.Data.Entities
         public Usuario(string nome, string email, string senha, DateOnly dataNascimento, EnumGenero genero)
         {
             Nome = nome;
-            Email = email;
+            Email = new Email(email);
             Senha = senha;
             DataNascimento = dataNascimento;
             Genero = genero;
-            IsAdmin = 0;
+            IsAdmin = false;
         }
         #endregion
 

@@ -1,6 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 
-namespace MenteSaudavel.Server._04._Infrastructure.Extensions
+namespace MenteSaudavel.Server._04.Infrastructure.Extensions
 {
     public static class EnumExtensions
     {
@@ -14,6 +14,11 @@ namespace MenteSaudavel.Server._04._Infrastructure.Extensions
                 .FirstOrDefault();
 
             return attribute?.Description ?? value.ToString();
+        }
+
+        public static int GetIntValue(this Enum value)
+        {
+            return (int)Convert.ChangeType(value.GetType().GetField("value__").GetValue(value), typeof(int));
         }
     }
 }
