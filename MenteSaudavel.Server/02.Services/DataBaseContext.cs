@@ -35,6 +35,7 @@ namespace MenteSaudavel.Server._02.Services
             modelBuilder.Entity<Usuario>().Property(p => p.Nome).HasMaxLength(100);
             modelBuilder.Entity<Usuario>().Property(p => p.Senha).HasMaxLength(100);
             modelBuilder.Entity<Usuario>().ComplexProperty(cp => cp.Email).Property(p => p.Endereco).HasColumnName("Email").HasMaxLength(100);
+            modelBuilder.Entity<Usuario>().ComplexProperty(cp => cp.Genero).Property(p => p.Valor).HasColumnName("Genero");
 
             modelBuilder.Entity<Questionario>().OwnsOne(o => o.Estratificacao).Property(p => p.Valor).HasColumnName("Estratificacao");
             modelBuilder.Entity<Questionario>().Navigation(p => p.Estratificacao).IsRequired(false);

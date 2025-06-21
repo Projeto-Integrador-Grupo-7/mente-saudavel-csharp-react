@@ -1,11 +1,11 @@
-﻿using MenteSaudavel.Server._03.Data.Entities;
+using MenteSaudavel.Server._04.Infrastructure.Dto;
 
 namespace MenteSaudavel.Server._02.Services.Interfaces.Services
 {
     public interface IUsuarioService
     {
-        List<Usuario> GetUsuarios();
+        Task<List<UsuarioTO>> GetUsuariosAsync();
 
-        Usuario CriarUsuario();
+        Task<UsuarioTO> CriarUsuarioAsync(UsuarioTO usuarioTO);
     }
 }

@@ -1,4 +1,4 @@
-﻿using MenteSaudavel.Server._02.Services.Interfaces;
+using MenteSaudavel.Server._02.Services.Interfaces;
 using MenteSaudavel.Server._02.Services.Repositories;
 
 namespace MenteSaudavel.Server._02.Services
@@ -8,7 +8,7 @@ namespace MenteSaudavel.Server._02.Services
     {
         public IUsuarioRepository UsuarioRepository { get; }
 
-        void SaveChanges();
+        Task SaveChangesAsync();
     }
     #endregion
 
@@ -44,9 +44,9 @@ namespace MenteSaudavel.Server._02.Services
             GC.SuppressFinalize(this);
         }
 
-        public void SaveChanges()
+        public async Task SaveChangesAsync()
         {
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
         public IUsuarioRepository UsuarioRepository

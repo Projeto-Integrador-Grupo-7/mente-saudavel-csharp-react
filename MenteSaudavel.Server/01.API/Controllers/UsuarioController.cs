@@ -1,5 +1,5 @@
-﻿using MenteSaudavel.Server._02.Services.Interfaces.Services;
-using MenteSaudavel.Server._03.Data.Entities;
+using MenteSaudavel.Server._02.Services.Interfaces.Services;
+using MenteSaudavel.Server._04.Infrastructure.Dto;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MenteSaudavel.Server._01.API.Controllers
@@ -16,19 +16,42 @@ namespace MenteSaudavel.Server._01.API.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetUsuarios()
+        public async Task<IActionResult> GetUsuariosAsync()
         {
-            List<Usuario> listaUsuario = _usuarioService.GetUsuarios();
+            try
+            {
+                List<UsuarioTO> listaUsuario = await _usuarioService.GetUsuariosAsync();
 
-            return Ok(listaUsuario);
+                if (!listaUsuario.Any())
+                {
+                    return NotFound("Nenhum usuário encontrado.");
+                }
+
+                return Ok(listaUsuario);
+            }
+            catch
+            {
+                return StatusCode(500, "Ocorreu um erro ao buscar os usuários.");
+            }
         }
 
         [HttpPost]
-        public IActionResult CriarUsuario()
+        public async Task<IActionResult> CriarUsuarioAsync(UsuarioTO usuarioTO)
         {
-            Usuario usuario = _usuarioService.CriarUsuario();
+            try
+            {
+                usuarioTO = await _usuarioService.CriarUsuarioAsync(usuarioTO);
 
-            return Ok(usuario);
+                return Ok(usuarioTO);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch
+            {
+                return StatusCode(500, "Ocorreu um erro ao cadastrar o usuário.");
+            }
         }
     }
 }
